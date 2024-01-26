@@ -8,8 +8,8 @@ import (
 	"os"
 )
 
-func DirSize(path string) (int64, error) {
-	var size int64
+func DirSize(path string) (uint64, error) {
+	var size uint64
 	entries, err := os.ReadDir(path)
 	if err != nil {
 		return size, err
@@ -28,7 +28,7 @@ func DirSize(path string) (int64, error) {
 				log.Printf("failed to get info of file %s: %v\n", entry.Name(), err)
 				continue
 			}
-			size += fileInfo.Size()
+			size += uint64(fileInfo.Size())
 		}
 	}
 	return size, nil
