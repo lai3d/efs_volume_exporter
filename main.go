@@ -3,11 +3,12 @@ package main
 import (
 	"flag"
 	"fmt"
+	"log"
 	"net/http"
 	"os"
 	"strings"
-	"log"
-	"github.com/mnadeem/volume_exporter/exporter"
+
+	"github.com/lai3d/efs_volume_exporter/exporter"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/prometheus/common/version"
 )
@@ -36,7 +37,7 @@ func main() {
 		volFlags = volumeFlags{}
 	)
 
-	log.Println("Starting volume_exporter")
+	log.Println("Starting efs_volume_exporter")
 
 	flag.Var(&volFlags.volumeNamePath, "volume-dir", "Volumes to report, the format is volumeName:VolumeDir;\n For example ==> logs:/app/logs; can be used multiple times to provide more than one value")
 	flag.Parse()
@@ -58,7 +59,7 @@ func main() {
 
 	exporter.Register(&volOpts)
 
-	log.Println("Starting volume_exporter", version.Info())
+	log.Println("Starting efs_volume_exporter", version.Info())
 	log.Println("Build context", version.BuildContext())
 
 	log.Fatal(serverMetrics(*listenAddress, *metricPath))
