@@ -1,10 +1,10 @@
 FROM        busybox
-LABEL maintainer="Mohammad Nadeem<coolmind182006@gmail.com>"
+LABEL maintainer="Larry Lai<cgpanda.ca@gmail.com>"
 
-COPY ./volume_exporter /bin/volume_exporter
+COPY ./efs_volume_exporter /bin/efs_volume_exporter
 
 USER 1001
 
-ENTRYPOINT [ "/bin/volume_exporter" ]
+ENTRYPOINT [ "/bin/efs_volume_exporter" ]
 CMD        [ "--volume-dir=bin:/bin", \
              "--web.listen-address=:9888" ]
