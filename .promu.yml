@@ -1,7 +1,7 @@
 go:
     cgo: false
 repository:
-    path: github.com/mnadeem/volume_exporter
+    path: github.com/lai3d/efs_volume_exporter
 build:
     flags: -a -tags netgo
     ldflags: |
@@ -12,7 +12,7 @@ build:
         -X {{repoPath}}/vendor/github.com/prometheus/common/version.BuildDate={{date "20060102-15:04:05"}}
     prefix: .
     binaries:
-        - name: volume_exporter
+        - name: efs_volume_exporter
           path: .
 tarball:
     files:

@@ -5,7 +5,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/mnadeem/volume_exporter/exporter"
+	"github.com/lai3d/efs_volume_exporter/exporter"
 	"github.com/prometheus/client_golang/prometheus"
 )
 

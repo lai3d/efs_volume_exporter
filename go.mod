@@ -1,4 +1,4 @@
-module github.com/mnadeem/volume_exporter
+module github.com/lai3d/efs_volume_exporter
 
 go 1.21
 

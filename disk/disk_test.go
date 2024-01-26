@@ -5,7 +5,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/mnadeem/volume_exporter/disk"
+	"github.com/lai3d/efs_volume_exporter/disk"
 )
 
 func TestFree(t *testing.T) {

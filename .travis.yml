@@ -16,7 +16,7 @@ language: go
 go:
 - 1.15
 
-go_import_path: github.com/mnadeem/volume_exporter
+go_import_path: github.com/lai3d/efs_volume_exporter
 
 before_script:
   - docker --version
