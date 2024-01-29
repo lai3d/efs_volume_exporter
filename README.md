@@ -18,8 +18,10 @@ Refer project [wiki](https://github.com/lai3d/efs_volume_exporter/wiki) for more
 ```bash 
 docker run --rm -p 9888:9888 -it dockerpandamaster/efs_volume_exporter --volume-dir=bin:/bin
 ```
-### Deploy It in Cloud
-Add as a sidecar
+
+### Deploy It in Kubernetes
+
+Add as a sidecar in deployment
 
 ```yaml 
         - name: volume-exporter
@@ -34,6 +36,49 @@ Add as a sidecar
           - mountPath: /prometheus
             name: prometheus-data
             readOnly: true
+```
+
+Expose port 9888 in service
+
+```yaml
+  - name: metrics-volume
+    port: 9888
+    protocol: TCP
+    targetPort: 9888
+```
+
+Complete Service example
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: cdn
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+    name: http
+  - name: metrics-volume
+    port: 9888
+    protocol: TCP
+    targetPort: 9888
+  selector:
+    app: nginx
+```
+
+In prometheus.yml, add a job to scrape metrics
+
+```yaml
+    scrape_configs:
+    - job_name: 'ind91_cdn_volume_metrics'
+
+      scrape_interval: 15s
+      scrape_timeout: 5s
+
+      static_configs:
+        - targets: ['cdn.staging:9888']
 ```
 
 ## Config
