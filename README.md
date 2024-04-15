@@ -72,7 +72,7 @@ In prometheus.yml, add a job to scrape metrics
 
 ```yaml
     scrape_configs:
-    - job_name: 'ind91_cdn_volume_metrics'
+    - job_name: 'cdn_volume_metrics'
 
       scrape_interval: 15s
       scrape_timeout: 5s
